@@ -11,7 +11,7 @@
 
 ### Actions에 워크 플로우 추가하기
 
-``` js
+``` yml
 name: Example workflow for S3 Deploy
 on:
   push:
