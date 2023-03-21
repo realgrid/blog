@@ -11,34 +11,36 @@
 
 ### Actions에 워크 플로우 추가하기
 
-> name: Example workflow for S3 Deploy
-> on:
->   push:
->     branches:
->       - main
-> jobs:
->   run:
->     runs-on: ubuntu-latest
->     env:
->       AWS_ACCESS_KEY_ID: $\{\{ secrets.AWS_ACCESS_KEY_ID }}
->       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
->     steps:
->         - uses: actions/checkout@v3
->
->         - name: Install dependencies
->           run: npm install
->
->         - name: Build
->           run: npm run build
->
->         - name: Deploy
->           uses: reggionick/s3-deploy@v3
->           with:
->             folder: build
->             bucket: static-web-20230219
->             bucket-region: ap-northeast-2
->             dist-id: E20UIAHTY6BI37
->             invalidation: /
->             delete-removed: true
->             no-cache: true
->             private: true
+```
+name: Example workflow for S3 Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: $\{\{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+        - uses: actions/checkout@v3
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: Build
+          run: npm run build
+
+        - name: Deploy
+          uses: reggionick/s3-deploy@v3
+          with:
+            folder: build
+            bucket: static-web-20230219
+            bucket-region: ap-northeast-2
+            dist-id: E20UIAHTY6BI37
+            invalidation: /
+            delete-removed: true
+            no-cache: true
+            private: true
+```
