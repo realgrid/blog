@@ -36,9 +36,9 @@ jobs:
           uses: reggionick/s3-deploy@v3
           with:
             folder: build
-            bucket: static-web-20230219
-            bucket-region: ap-northeast-2
-            dist-id: E20UIAHTY6BI37
+            bucket: ${{ secrets.bucket }}
+            bucket-region: ${{ secrets.region }}
+            dist-id: ${{ secrets.id }}
             invalidation: /
             delete-removed: true
             no-cache: true
