@@ -11,7 +11,7 @@
 
 ### Actions에 워크 플로우 추가하기
 
-```
+``` js
 name: Example workflow for S3 Deploy
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: $\{\{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
         - uses: actions/checkout@v3
