@@ -3,6 +3,8 @@
 
 ## 실습
 
+<iframe width="800" height="450" src="https://www.youtube.com/embed/bvV_-DTt5dI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### 깃헙 새로운 레파지토리 생성
 
 ### Actions에 워크 플로우 추가하기
