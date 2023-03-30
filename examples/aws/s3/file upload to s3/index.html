@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>File upload to s3</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <button onclick="uploadFile()">Upload</button>
+</body>
+</html>
+
+<script>
+    function uploadFile() {
+        var file = document.getElementById('fileToUpload').files[0];
+        var formData = new FormData();
+        formData.append('file', file);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://sx5ydvalz8.execute-api.ap-northeast-2.amazonaws.com/test/file', true);
+        xhr.onload = function (e) {
+            console.log(this.response);
+        };
+        xhr.send(formData);
+    }
+</script>
