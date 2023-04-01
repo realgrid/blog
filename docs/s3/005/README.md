@@ -18,8 +18,11 @@ let result = {};
 
 exports.handler = async (event) => {
     try {
+        var contentType = event.params.header["Content-Type"];
+        if (!contentType) contentType = event.params.header["content-type"];
+
         const bodyBuffer = Buffer.from(event["body-json"], "base64");
-        const boundary = multipart.getBoundary(event.params.header["Content-Type"]);
+        const boundary = multipart.getBoundary(contentType);
         const parts = multipart.Parse(bodyBuffer, boundary);
         const file = parts[0];
         const bucketName = 'static-web-20230219';
