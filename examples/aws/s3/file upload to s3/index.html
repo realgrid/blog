@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>File upload to s3</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload to S3</title>
 </head>
 <body>
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <button onclick="uploadFile()">Upload</button>
+    <input type="file" name="file" id="file">
+    <button id="btn">Upload</button>
 </body>
 </html>
 
 <script>
-    function uploadFile() {
-        var file = document.getElementById('fileToUpload').files[0];
-        var formData = new FormData();
-        formData.append('file', file);
+    const file = document.getElementById('file');
+    const btn = document.getElementById('btn');
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://sx5ydvalz8.execute-api.ap-northeast-2.amazonaws.com/test/file', true);
-        xhr.onload = function (e) {
-            console.log(this.response);
-        };
-        xhr.send(formData);
-    }
+    btn.addEventListener('click', () => {
+        const formData = new FormData();
+        formData.append('file', file.files[0]);
+        fetch('https://sx5ydvalz8.execute-api.ap-northeast-2.amazonaws.com/test/file', {
+            method: 'POST',
+            body: formData
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    });
 </script>
