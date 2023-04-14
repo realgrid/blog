@@ -29,8 +29,11 @@
 </html>
 
 <script>
+    const projectId = "[프로젝트 ID]";
+    const channelId = "";
+
     var gc = new gamechat.Chat();
-    gc.initialize("dbf5d95e-2563-40d4-8385-5211c87906f6");
+    gc.initialize(projectId);
 
     gc.bind('onMessageReceived', function (channel, message) {
         console.log("onMessageReceived: ", message);
@@ -42,7 +45,7 @@
 
     gc.bind('onConnected', function (channel, message) {
         console.log("onConnected", message);
-        gc.subscribe("bdb33556-2875-4e27-a18b-21d28b65b278");
+        gc.subscribe(channelId);
     });
 
     gc.bind('onDisconnected', function (reason) {
@@ -65,7 +68,7 @@
 
         document.getElementById("btSend").addEventListener("click", function () {
             var msg = document.getElementById("msg").value;
-            gc.sendMessage("bdb33556-2875-4e27-a18b-21d28b65b278", msg);
+            gc.sendMessage(channelId, msg);
         });
     }
 </script>
