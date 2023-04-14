@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        <script src="GameChat.min.js"></script>
+    </head>
+
+    <title>Naver GameChat</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" name="userId" id="userId">
+        <button id="btLogin">login</button>
+    </div>
+    <br><br>
+
+    <div>
+        <input type="text" name="msg" id="msg">
+        <button id="btSend">send</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var gc = new gamechat.Chat();
+    gc.initialize("dbf5d95e-2563-40d4-8385-5211c87906f6");
+
+    gc.bind('onMessageReceived', function (channel, message) {
+        console.log("onMessageReceived: ", message);
+    });
+
+    gc.bind('onErrorReceived', function (channel, message) {
+        console.log("onErrorReceived: ", message);
+    });
+
+    gc.bind('onConnected', function (channel, message) {
+        console.log("onConnected", message);
+        gc.subscribe("bdb33556-2875-4e27-a18b-21d28b65b278");
+    });
+
+    gc.bind('onDisconnected', function (reason) {
+        console.log("onDisconnected");
+    });
+
+    window.onload = function () {
+        document.getElementById("btLogin").addEventListener("click", function () {
+            var userId = document.getElementById("userId").value;
+
+            gc.setUser({
+                id: userId,
+                name: 'Nickname'
+            });
+
+            gc.connect(userId, (err, res) => {
+                if (err) console.log(err);
+            });
+        });
+
+        document.getElementById("btSend").addEventListener("click", function () {
+            var msg = document.getElementById("msg").value;
+            gc.sendMessage("bdb33556-2875-4e27-a18b-21d28b65b278", msg);
+        });
+    }
+</script>
