@@ -58,8 +58,8 @@
 </html>
 
 <script>
-    const projectId = "[프로젝트 ID]";
-    const channelId = "";
+    var projectId = "[프로젝트 ID]";
+    var channelId = "[채널 ID]";
 
     var gc = new gamechat.Chat();
     gc.initialize(projectId);
@@ -72,9 +72,16 @@
         console.log("onErrorReceived: ", message);
     });
 
-    gc.bind('onConnected', function (channel, message) {
+    gc.bind('onConnected', async function (channel, message) {
         console.log("onConnected", message);
+
+        while (!gc.isConnected()) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+
         gc.subscribe(channelId);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        console.log("subscribed");
     });
 
     gc.bind('onDisconnected', function (reason) {
@@ -84,12 +91,10 @@
     window.onload = function () {
         document.getElementById("btLogin").addEventListener("click", function () {
             var userId = document.getElementById("userId").value;
-
             gc.setUser({
                 id: userId,
-                name: 'Nickname'
+                name: "Nickname",
             });
-
             gc.connect(userId, (err, res) => {
                 if (err) console.log(err);
             });
