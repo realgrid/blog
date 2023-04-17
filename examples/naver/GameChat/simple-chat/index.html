@@ -46,13 +46,8 @@
     gc.bind('onConnected', async function (channel, message) {
         console.log("onConnected", message);
 
-        while (!gc.isConnected()) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
-
-        gc.subscribe(channelId);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log("subscribed");
+        setTimeout(() => gc.subscribe(channelId), 500);
+        setTimeout(() => console.log("subscribed"), 1000);
     });
 
     gc.bind('onDisconnected', function (reason) {
