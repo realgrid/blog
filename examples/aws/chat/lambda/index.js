@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk');
 
-const ENDPOINT = '[endpoint]]';
+const ENDPOINT = '[ednpoint]]';
 const client = new AWS.ApiGatewayManagementApi({ endpoint: ENDPOINT });
 const names = {};
 
@@ -31,7 +31,7 @@ exports.handler = async (event) => {
         const body = JSON.parse(event.body || '{}');
 
         switch (routeKey) {
-            case "$connect": names[connectionId] = ""; break;
+            case "$connect": break;
             case "$disconnect": delete names[connectionId]; break;
 
             default:
