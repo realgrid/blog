@@ -1,4 +1,4 @@
-# realtouch
+# 리얼그리드 터치 예제 - 01
 
 ## Project setup
 ```
