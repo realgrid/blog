@@ -30,7 +30,6 @@ export default {
 
         if (this.data) {
             this.list = RealGridTouch.createListControl(document, "realtouch");
-            this.list.setConfig(this.config);
             this.list.data = this.data;
             this.data.source.appendRows(yososu);
         }
