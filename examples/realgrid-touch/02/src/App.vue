@@ -20,44 +20,7 @@ export default {
                     { name: 'DATA_STD_DTM' }
                 ],
             },
-            header: {
-                visible: true,
-                caption: "요소수 구입처",
-                captionAlign: "center",
-                buttons: [
-                    {
-                        name: "home",
-                        position: "head",
-                        label: "처음",
-                        onClick: this.homeClicked,
-                    },
-                    {
-                        name: "edit",
-                        label: "편집",
-                        style: { color: "blue" },
-                        onClick: this.editClick,
-                    }
-                ],
-            },
-            footer: {
-                visible: true,
-                template: "footer",
-                buttons: [
-                    {
-                        name: "delete",
-                        label: "삭제",
-                        position: "tail",
-                        enabled: () => this.list.checkedRowCount > 0,
-                        onClick: this.deleteClicked,
-                        style: { color: "red" },
-                    }
-                ],
-            },
-            rowBar: {
-                visible: true,
-                display: "order",
-            },
-        };
+        }
     },
 
     mounted() {
@@ -67,42 +30,11 @@ export default {
 
         if (this.data) {
             this.list = RealGridTouch.createListControl(document, "realtouch");
+            this.list.setConfig(this.config);
             this.list.data = this.data;
             this.data.source.appendRows(yososu);
-
-            this.list.setConfig({
-                options: {
-                    header: this.header,
-                    footer: this.footer,
-                    rowBar: this.rowBar,
-                }
-            });
         }
-    },
-
-    methods: {
-        homeClicked() {
-            alert(" home clicked.");
-        },
-
-        editClick(args) {
-            if (args.button.label == "완료") {
-                args.button.label = "편집";
-                this.list.checkAll(false);
-                this.list.options.rowBar.display = "order";
-            } else {
-                args.button.label = "완료";
-                this.list.options.rowBar.display = "check";
-            }
-
-            this.list.options.header.setButton(args.button);
-        },
-
-        deleteClicked() {
-            let rows = this.list.getCheckedRows();
-            this.data.deleteRows(rows);
-        },
-    },
+    }
 }
 </script>
 
