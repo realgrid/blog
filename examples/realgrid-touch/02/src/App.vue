@@ -53,7 +53,11 @@ export default {
                     }
                 ],
             },
-        }
+            rowBar: {
+                visible: true,
+                display: "order",
+            },
+        };
     },
 
     mounted() {
@@ -61,46 +65,40 @@ export default {
             .createView('view')
             .build();
 
-        let config = {
-            props: this.props,
-            options: {
-                header: this.header,
-                footer: this.footer,
-                row: this.row,
-                rowBar: this.rowBar,
-                emptyPage: this.emptyPage,
-            }
-        };
-
         if (this.data) {
             this.list = RealGridTouch.createListControl(document, "realtouch");
-            this.list.setConfig(config);
             this.list.data = this.data;
             this.data.source.appendRows(yososu);
+
+            this.list.setConfig({
+                options: {
+                    header: this.header,
+                    footer: this.footer,
+                    rowBar: this.rowBar,
+                }
+            });
         }
     },
 
     methods: {
-        homeClicked: function () {
+        homeClicked() {
             alert(" home clicked.");
         },
 
-        editClick: function (args) {
-            console.log("edit clicked.", args.button.label);
-
+        editClick(args) {
             if (args.button.label == "완료") {
                 args.button.label = "편집";
-                this.list.options.rowBar.visible = false;
-                return;
+                this.list.checkAll(false);
+                this.list.options.rowBar.display = "order";
+            } else {
+                args.button.label = "완료";
+                this.list.options.rowBar.display = "check";
             }
 
-            args.button.label = "완료";
-            this.list.options.rowBar.display = "check";
-            this.list.checkAll(false);
-            this.list.options.rowBar.visible = true;
+            this.list.options.header.setButton(args.button);
         },
 
-        deleteClicked: function () {
+        deleteClicked() {
             let rows = this.list.getCheckedRows();
             this.data.deleteRows(rows);
         },
