@@ -25,6 +25,7 @@ exports.handler = async (event) => {
 };
 ```
 
+
 ## 데이터 추가하기
 
 ``` js
@@ -50,6 +51,7 @@ exports.handler = async (event) => {
     }
 };
 ```
+
 
 ## 데이터 수정하기
 
@@ -82,7 +84,6 @@ exports.handler = async (event) => {
 
 
 ## 데이터 삭제하기
-
 
 ``` js
 const AWS = require('aws-sdk');
