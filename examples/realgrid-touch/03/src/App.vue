@@ -57,12 +57,3 @@ export default {
 
 <style>
 @import url('realgrid-touch/dist/realgrid-touch-style.css');
-
-#realtouch {
-    position: absolute;
-    overflow: scroll;
-    width: 100%;
-    height: 30vh;
-    overflow: hidden;
-}
-</style>
