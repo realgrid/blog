@@ -44,10 +44,9 @@ exports.handler = async (event) => {
     };
     try {
         const data = await dynamoDB.put(item).promise();
-        return `Successfully added item to DynamoDB`;
+        return 'Successfully added item to DynamoDB';
     } catch (error) {
-        console.error(error);
-        throw new Error('Error adding item to DynamoDB');
+        return 'Error adding item to DynamoDB';
     }
 };
 ```
