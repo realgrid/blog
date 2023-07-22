@@ -30,19 +30,12 @@ export default {
                 {
                     field: 'OILSTATN_NM',
                     left: 0,
-                    style: {
-                        fontSize: '17px',
-                        fontWeight: 'bold',
-                        color: '#555'
-                    },
+                    style: { fontSize: '17px', fontWeight: 'bold', color: '#555' },
                 },
                 {
                     field: 'LOCPLC_ROADNM_ADDR',
                     left: 0,
-                    style: {
-                        fontSize: '14px',
-                        color: '#777'
-                    },
+                    style: { fontSize: '14px', color: '#777' },
                 }
             ]
         };
@@ -111,7 +104,7 @@ export default {
                                     fontSize: "14px"
                                 },
                                 onClick: (args) => {
-                                    args.control.showInfoPage(args.row);
+                                    args.control.showEditPage(args.row);
                                     return true;
                                 }
                             }
@@ -139,7 +132,7 @@ export default {
                 },
                 infoPage: {
                     header: { caption: '요소수 정보' },
-                    viewType: 'A',
+                    viewType: 'B',
                 },
             },
             props: {
