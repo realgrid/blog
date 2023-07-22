@@ -1,0 +1,140 @@
+{
+    "OutputGroups": [
+        {
+            "CustomName": "HLS",
+            "Name": "Apple HLS",
+            "Outputs": [
+                {
+                    "ContainerSettings": {
+                        "Container": "M3U8",
+                        "M3u8Settings": {}
+                    },
+                    "VideoDescription": {
+                        "CodecSettings": {
+                            "Codec": "H_264",
+                            "H264Settings": {
+                                "MaxBitrate": 3000000,
+                                "RateControlMode": "QVBR",
+                                "SceneChangeDetect": "TRANSITION_DETECTION"
+                            }
+                        }
+                    },
+                    "AudioDescriptions": [
+                        {
+                            "CodecSettings": {
+                                "Codec": "AAC",
+                                "AacSettings": {
+                                    "Bitrate": 96000,
+                                    "CodingMode": "CODING_MODE_2_0",
+                                    "SampleRate": 48000
+                                }
+                            }
+                        }
+                    ],
+                    "OutputSettings": {
+                        "HlsSettings": {}
+                    },
+                    "NameModifier": "_high"
+                },
+                {
+                    "ContainerSettings": {
+                        "Container": "M3U8",
+                        "M3u8Settings": {}
+                    },
+                    "VideoDescription": {
+                        "CodecSettings": {
+                            "Codec": "H_264",
+                            "H264Settings": {
+                                "MaxBitrate": 2000000,
+                                "RateControlMode": "QVBR",
+                                "SceneChangeDetect": "TRANSITION_DETECTION"
+                            }
+                        }
+                    },
+                    "AudioDescriptions": [
+                        {
+                            "CodecSettings": {
+                                "Codec": "AAC",
+                                "AacSettings": {
+                                    "Bitrate": 96000,
+                                    "CodingMode": "CODING_MODE_2_0",
+                                    "SampleRate": 48000
+                                }
+                            }
+                        }
+                    ],
+                    "OutputSettings": {
+                        "HlsSettings": {}
+                    },
+                    "NameModifier": "_medium"
+                },
+                {
+                    "ContainerSettings": {
+                        "Container": "M3U8",
+                        "M3u8Settings": {}
+                    },
+                    "VideoDescription": {
+                        "CodecSettings": {
+                            "Codec": "H_264",
+                            "H264Settings": {
+                                "MaxBitrate": 1000000,
+                                "RateControlMode": "QVBR",
+                                "SceneChangeDetect": "TRANSITION_DETECTION"
+                            }
+                        }
+                    },
+                    "AudioDescriptions": [
+                        {
+                            "CodecSettings": {
+                                "Codec": "AAC",
+                                "AacSettings": {
+                                    "Bitrate": 96000,
+                                    "CodingMode": "CODING_MODE_2_0",
+                                    "SampleRate": 48000
+                                }
+                            }
+                        }
+                    ],
+                    "OutputSettings": {
+                        "HlsSettings": {}
+                    },
+                    "NameModifier": "_low"
+                }
+            ],
+            "OutputGroupSettings": {
+                "Type": "HLS_GROUP_SETTINGS",
+                "HlsGroupSettings": {
+                    "SegmentLength": 10,
+                    "MinSegmentLength": 0
+                }
+            }
+        }
+    ],
+    "Inputs": [
+        {
+            "InputClippings": [
+                {
+                    "EndTimecode": "00:00:00:00",
+                    "StartTimecode": "00:00:00:00"
+                }
+            ],
+            "AudioSelectors": {
+                "Audio Selector 1": {
+                    "Offset": 0,
+                    "DefaultSelection": "DEFAULT",
+                    "ProgramSelection": 1
+                }
+            },
+            "VideoSelector": {
+                "Rotate": "AUTO"
+            },
+            "FilterEnable": "AUTO",
+            "PsiControl": "USE_PSI",
+            "FilterStrength": 0,
+            "DeblockFilter": "DISABLED",
+            "DenoiseFilter": "DISABLED",
+            "TimecodeSource": "ZEROBASED",
+            "FileInput": ""
+        }
+    ]
+}
