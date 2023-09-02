@@ -1,6 +1,5 @@
 # 클래스 상속과 인터페이스 구현의 차이
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/1Zl1Mpw6NPk?si=5BflKp6oqzJPlAK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## 기본적인 개념
 
