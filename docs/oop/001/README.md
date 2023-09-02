@@ -1,5 +1,6 @@
 # 클래스 상속과 인터페이스 구현의 차이
 
+[동영상 설명](https://youtu.be/1Zl1Mpw6NPk?si=7lOXUDxxGAKB2yaE)
 
 ## 기본적인 개념
 
