@@ -138,5 +138,3 @@ erDiagram
     Customers ||--o{ Cart : owns
     Products ||--o{ OrderItems : has
 ```
-
-![](./pic-1.png)
