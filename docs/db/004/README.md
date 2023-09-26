@@ -1,91 +1,196 @@
 # 쇼핑몰 주문관리 시스템 구축하기 #2
 
 
-## 엔티티 속성 도출 (작성중)
+## PK 결정
+
+``` mermaid
+erDiagram
+    Customers {
+        int id PK
+    }
+
+    Orders {
+        int id PK
+    }
+
+    ShippingAddress {
+        int id PK
+    }
+
+    OrderItems {
+        int id PK
+    }
+
+    Cart {
+        int id PK
+    }
+
+    Products {
+        int id PK
+    }
+```
+
+
+## PK 선정의 다양한 방법과 그 특성
+
+### 자동 순번 (Auto-Incrementing Key)
+
+#### 정의
+- 데이터베이스에서 자동으로 증가하는 순번으로, 주로 숫자 형식입니다.
+
+#### 장점
+- 간단하고 쉬운 관리: 새로운 레코드가 추가될 때마다 데이터베이스 시스템이 자동으로 값을 할당합니다.
+- 중복 위험 없음: 시스템이 자동으로 값을 관리하기 때문에 유일성이 보장됩니다.
+
+#### 단점
+- 의미 없는 값: 이 키는 단순히 유일성을 보장하기 위한 목적이므로, 비즈니스 로직에서 의미를 가지지 않습니다.
+- 순차적 증가로 인한 보안 이슈: 순차적인 값은 예측이 가능하므로, 보안에 취약할 수 있습니다.
+
+### 단일키 (Single Key)
+
+#### 정의
+- 하나의 속성 또는 열을 기본 키로 사용하는 것입니다.
+
+#### 장점
+- 단순성: 하나의 속성만 관리하면 되므로, 복잡성이 적습니다.
+- 쿼리 성능: 하나의 열만 인덱싱하므로, 쿼리 성능이 좋을 수 있습니다.
+
+#### 단점
+- 유일성 확보의 어려움: 하나의 열로 유일성을 확보하기 어려울 수 있습니다.
+- 변경 가능성: 비즈니스 요구사항의 변화로 인해 단일키가 변경될 수 있습니다.
+
+### 복합키 (Composite Key)
+
+#### 정의
+- 두 개 이상의 속성 또는 열을 결합하여 기본 키로 사용하는 것입니다.
+
+#### 장점
+- 유일성 확보: 단일키만으로는 유일성을 보장하기 어려운 경우, 여러 열의 조합으로 유일성을 확보할 수 있습니다.
+
+#### 단점
+- 복잡성: 여러 열을 관리해야 하므로, 복잡성이 증가합니다.
+- 쿼리 성능: 여러 열에 대한 인덱싱으로 인해 쿼리 성능이 단일키에 비해 떨어질 수 있습니다.
+
+
+## 관계 찾기
+
+###  Customers
+
+``` mermaid
+erDiagram
+    Customers ||--o{ Orders : places
+    Customers ||--o{ ShippingAddress : has
+    Customers ||--o{ Cart : owns
+
+    Customers {
+        int id PK
+    }
+
+    Orders {
+        int id PK
+        int customerId FK
+    }
+
+    ShippingAddress {
+        int id PK
+        int customerId FK
+    }
+
+    Cart {
+        int id PK
+        int customerId FK
+    }
+```
+
+### Orders
+
+``` mermaid
+erDiagram
+    Orders ||--o| ShippingAddress : uses
+    Orders ||--o{ OrderItems : contains
+
+    Orders {
+        int id PK
+    }
+
+    ShippingAddress {
+        int id PK
+        int orderId FK
+    }
+
+    OrderItems {
+        int id PK
+        int orderId FK
+    }
+
+    Cart {
+        int id PK
+    }
+```
+* 주문 버튼을 클릭하면 Cart에서 선택된 상품만 ShippingAddress으로 옮겨집니다. 따라서 Orders와 Cart는 직접적인 연관은 없습니다.
 
 ### Products
 
-| 속성        | 설명                      |
-| ----------- | ------------------------- |
-| ProductID   | 상품의 고유 식별자입니다. |
-| Name        | 상품의 이름입니다.        |
-| Description | 상품에 대한 설명입니다.   |
-| Price       | 상품의 가격입니다.        |
-| Category    | 상품의 카테고리입니다.    |
-| Stock       | 현재 재고 수량입니다.     |
-- **ProductID**: 각 상품에 고유하게 부여된 식별자입니다.
-- **Name**: 상품의 이름입니다.
-- **Description**: 상품에 대한 상세 설명입니다.
-- **Price**: 상품의 가격입니다.
-- **Category**: 상품이 속한 카테고리입니다.
-- **Stock**: 상품의 현재 재고 수량입니다.
+``` mermaid
+erDiagram
+    Products ||--o{ Cart : listed_in
+    Products ||--o{ OrderItems : has
 
-### Discounts
+    Products {
+        int id PK
+    }
 
-| 속성       | 설명                                 |
-| ---------- | ------------------------------------ |
-| DiscountID | 할인의 고유 식별자입니다.            |
-| Amount     | 할인 금액 또는 할인율입니다.         |
-| StartDate  | 할인이 시작되는 날짜입니다.          |
-| EndDate    | 할인이 끝나는 날짜입니다.            |
-| ProductID  | 할인이 적용되는 상품의 식별자입니다. |
-- **DiscountID**: 각 할인에 고유하게 부여된 식별자입니다.
-- **Amount**: 할인 금액 또는 할인율 (예: 10% 또는 $10)입니다.
-- **StartDate**: 해당 할인이 시작되는 날짜입니다.
-- **EndDate**: 해당 할인이 종료되는 날짜입니다.
-- **ProductID**: 할인이 적용되는 상품의 식별자입니다.
+    OrderItems {
+        int id PK
+        int productId FK
+    }
 
-### Promotions
+    Cart {
+        int id PK
+        int productId FK
+    }
+```
 
-| 속성        | 설명                                    |
-| ----------- | --------------------------------------- |
-| PromotionID | 프로모션의 고유 식별자입니다.           |
-| Description | 프로모션에 대한 설명입니다.             |
-| StartDate   | 프로모션 시작 날짜입니다.               |
-| EndDate     | 프로모션 종료 날짜입니다.               |
-| DiscountID  | 관련된 할인의 식별자입니다 (선택 사항). |
-- **PromotionID**: 각 프로모션에 고유하게 부여된 식별자입니다.
-- **Description**: 프로모션에 대한 상세 설명입니다.
-- **StartDate**: 프로모션의 시작 날짜입니다.
-- **EndDate**: 프로모션의 종료 날짜입니다.
-- **DiscountID**: 프로모션과 연결된 특정 할인의 식별자입니다 (모든 프로모션이 할인과 연결되어 있지는 않습니다).
+### 결과
 
-### GiftCards
+``` mermaid
+erDiagram
+    Customers ||--o{ Orders : places
+    Customers ||--o{ ShippingAddress : has
+    Customers ||--o{ Cart : owns
+    Orders ||--o| ShippingAddress : uses
+    Orders ||--o{ OrderItems : contains
+    Products ||--o{ Cart : listed_in
+    Products ||--o{ OrderItems : has
 
-GiftCards는 고객이 물품을 구매하거나 선물로 받을 수 있는 전자 또는 물리적인 카드를 관리하는 데 사용됩니다.
-이러한 카드는 일반적으로 특정 금액의 크레딧을 가지며, 그 금액은 구매 시 사용될 수 있습니다.
+    Customers {
+        int id PK
+    }
 
-| 속성           | 설명                                                 |
-| -------------- | ---------------------------------------------------- |
-| CardID         | 기프트 카드의 고유 식별자입니다.                     |
-| Amount         | 기프트 카드의 초기 금액 또는 잔액입니다.             |
-| ExpiryDate     | 기프트 카드의 만료 날짜입니다.                       |
-| ActivationDate | 기프트 카드의 활성화 날짜입니다.                     |
-| CustomerID     | 기프트 카드를 소유하고 있는 고객의 식별자입니다.     |
-| Status         | 기프트 카드의 상태 (예: 활성, 사용됨, 만료됨)입니다. |
-- **CardID**: 각 기프트 카드에 고유하게 부여된 식별자입니다.
-- **Amount**: 기프트 카드에 잔여하는 금액입니다.
-- **ExpiryDate**: 기프트 카드의 유효기간입니다.
-- **ActivationDate**: 기프트 카드가 활성화되는 날짜입니다.
-- **CustomerID**: 기프트 카드를 소유한 고객의 고유 식별자입니다.
-- **Status**: 기프트 카드의 현재 상태를 나타냅니다 (예: 활성화, 사용됨, 만료됨 등).
+    Orders {
+        int id PK
+        int customerId FK
+    }
 
-### LoyaltyPoints
+    ShippingAddress {
+        int id PK
+        int customerId FK
+        int orderId FK
+    }
 
-LoyaltyPoints는 고객의 충성도를 보상하기 위한 포인트 시스템을 관리합니다.
-고객은 구매나 다른 활동을 통해 포인트를 획득할 수 있으며,
-이 포인트는 특정 쇼핑몰에서의 할인이나 다른 혜택을 받기 위해 사용될 수 있습니다.
+    Cart {
+        int id PK
+        int customerId FK
+        int productId FK
+    }
 
-| 속성        | 설명                                     |
-| ----------- | ---------------------------------------- |
-| CustomerID  | 포인트를 소유한 고객의 식별자입니다.     |
-| TotalPoints | 고객이 현재 가지고 있는 총 포인트입니다. |
-| EarnedDate  | 마지막으로 포인트를 획득한 날짜입니다.   |
-| UsedDate    | 마지막으로 포인트를 사용한 날짜입니다.   |
-| ExpiryDate  | 포인트의 만료 날짜입니다.                |
-- **CustomerID**: 포인트를 소유한 고객의 고유 식별자입니다.
-- **TotalPoints**: 고객이 현재 보유하고 있는 총 포인트 수입니다.
-- **EarnedDate**: 고객이 마지막으로 포인트를 획득한 날짜입니다.
-- **UsedDate**: 고객이 마지막으로 포인트를 사용한 날짜입니다.
-- **ExpiryDate**: 일부 포인트가 만료되는 날짜입니다. (모든 포인트가 동일한 만료 날짜를 갖지 않을 수 있습니다.)
+    OrderItems {
+        int id PK
+        int orderId FK
+        int productId FK
+    }
 
+    Products {
+        int id PK
+    }
+```
