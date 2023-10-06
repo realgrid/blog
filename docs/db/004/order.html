@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문/결제</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>주문/결제</h1>
+
+    <form action="/order_process" method="post">
+
+        <!-- 구매자 정보 -->
+        <fieldset>
+            <legend>구매자 정보</legend>
+            <label for="buyer-name">이름:</label>
+            <input type="text" id="buyer-name" name="buyer-name" value="유종택" readonly>
+            <label for="buyer-email">이메일:</label>
+            <input type="email" id="buyer-email" name="buyer-email" value="ryujt658@gmail.com" readonly>
+            <label for="buyer-phone">휴대폰 번호:</label>
+            <input type="tel" id="buyer-phone" name="buyer-phone" value="010-5802-0658" readonly>
+            <p>쿠폰/티켓 정보는 구매한 분의 번호로 전송됩니다.</p>
+            <p>* 인증 번호를 못 받았다면, 1577-7011 번호 차단 및 스팸 설정을 확인해 주세요.</p>
+        </fieldset>
+
+        <!-- 받는사람 정보 -->
+        <fieldset>
+            <legend>받는사람 정보</legend>
+            <label for="receiver-name">이름:</label>
+            <input type="text" id="receiver-name" name="receiver-name" value="류종택" readonly>
+            <label for="receiver-address">배송주소:</label>
+            <textarea id="receiver-address" name="receiver-address"
+                readonly>서울특별시 양천구 목동 404-13 목동 센트럴 푸르지오 102동 304호</textarea>
+            <label for="receiver-phone">연락처:</label>
+            <input type="tel" id="receiver-phone" name="receiver-phone" value="010-5802-0658" readonly>
+            <label for="delivery-request">배송 요청사항:</label>
+            <select id="delivery-request" name="delivery-request">
+                <option value="front-door">문 앞</option>
+                <option value="security-call">문 앞 (경비실 호출)</option>
+            </select>
+        </fieldset>
+
+        <!-- 상품 정보 -->
+        <fieldset>
+            <legend>상품 정보</legend>
+            <p>배송 1건 중 1 (새벽배송)</p>
+            <p>내일(토) 10/7 새벽 7시 전 도착 보장</p>
+            <p>상품수량 1개</p>
+            <p>오뚜기 우동건더기스프, 250g, 1개</p>
+        </fieldset>
+
+        <!-- 결제 정보 -->
+        <fieldset>
+            <legend>결제 정보</legend>
+            <p>총상품가격: 20770원</p>
+            <p>할인쿠폰: 0원</p>
+            <p>배송비: 0원</p>
+            <p>총결제금액: 20,770원</p>
+            <p>캐시적립 예정: 208원</p>
+            <p>결제방법:</p>
+            <span>
+                <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+                <label for="credit-card">신용/체크카드</label>
+            </span>
+            <span>
+                <input type="radio" id="corporate-card" name="payment-method" value="corporate-card">
+                <label for="corporate-card">법인카드</label>
+            </span>
+            <span>
+                <input type="radio" id="phone-payment" name="payment-method" value="phone-payment">
+                <label for="phone-payment">휴대폰</label>
+            </span>
+            <span>
+                <input type="radio" id="bank-transfer" name="payment-method" value="bank-transfer">
+                <label for="bank-transfer">무통장입금(가상계좌)</label>
+            </span>
+        </fieldset>
+
+        <!-- 현금영수증 정보 -->
+        <fieldset>
+            <legend>현금영수증</legend>
+            <label for="receipt-phone">휴대폰번호:</label>
+            <input type="tel" id="receipt-phone" name="receipt-phone" value="010-1234-5678" readonly>
+            <label>(소득공제)</label>
+        </fieldset>
+
+        <p>위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공(해외직구의 경우 국외제공) 및 결제에 동의합니다.</p>
+
+        <!-- 결제 버튼 -->
+        <input type="submit" value="결제하기">
+
+    </form>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px 0 20px 50px;
+            /* 왼쪽에 50px의 여백을 추가하였습니다. */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label,
+        input,
+        textarea,
+        select {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        span {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        /* 결제 방법의 라디오 버튼 스타일 */
+        span input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</body>
+
+</html>
