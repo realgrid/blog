@@ -127,7 +127,7 @@ erDiagram
         int id PK
     }
 ```
-* 주문 버튼을 클릭하면 Cart에서 선택된 상품만 ShippingAddress으로 옮겨집니다. 따라서 Orders와 Cart는 직접적인 연관은 없습니다.
+* 주문 버튼을 클릭하면 Cart에서 선택된 상품만 OrderItems로 옮겨집니다. 따라서 Orders와 Cart는 직접적인 연관은 없습니다.
 
 ### Products
 
