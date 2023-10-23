@@ -170,12 +170,12 @@ erDiagram
     Orders {
         int id PK
         int customerId FK
+        int shippingAddressId FK
     }
 
     ShippingAddress {
         int id PK
         int customerId FK
-        int orderId FK
     }
 
     Cart {
