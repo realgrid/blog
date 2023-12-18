@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .product-detail {
+            flex: 1;
+        }
+
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .product-price {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ccc;
+        }
+
+        .total-price {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .checkout-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>장바구니</h1>
+    <p>일반구매 (3) 정기배송 (0)</p>
+
+    <div class="product">
+        <div class="checkbox-container">
+            <input type="checkbox" id="product1-checkbox">
+            <label for="product1-checkbox"></label>
+        </div>
+        <img src="item.png" alt="Product Image">
+        <div class="product-detail">
+            <p>국산 혼합 17곡, 4kg, 1개</p>
+            <p>내일(토) 10/7 새벽 7시 전 도착 보장</p>
+        </div>
+        <div class="product-actions">
+            <div class="product-price">제품가격: 14,900원</div>
+            <button class="btn btn-secondary">상품삭제</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <div class="checkbox-container">
+            <input type="checkbox" id="product2-checkbox">
+            <label for="product2-checkbox"></label>
+        </div>
+        <img src="item.png" alt="Product Image">
+        <div class="product-detail">
+            <p>오뚜기 우동건더기스프, 250g, 1개</p>
+            <p>내일(토) 10/7 새벽 7시 전 도착 보장</p>
+        </div>
+        <div class="product-actions">
+            <div class="product-price">제품가격: 5,870원</div>
+            <button class="btn btn-secondary">상품삭제</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <div class="checkbox-container">
+            <input type="checkbox" id="product3-checkbox">
+            <label for="product3-checkbox"></label>
+        </div>
+        <img src="item.png" alt="Product Image">
+        <div class="product-detail">
+            <p>유산균 장건강 체지방감소 60캡슐, 60정, 2개</p>
+            <p>수요일10/11 도착 예정</p>
+        </div>
+        <div class="product-actions">
+            <div class="product-price">제품가격: 118,990원</div>
+            <button class="btn btn-secondary">상품삭제</button>
+        </div>
+    </div>
+
+    <div class="total-price">총 주문금액: 139,760원</div>
+
+    <div class="checkout-btns">
+        <button class="btn btn-secondary">계속 쇼핑하기</button>
+        <button class="btn btn-primary">구매하기</button>
+    </div>
+
+</body>
+
+</html>

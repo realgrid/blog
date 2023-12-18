@@ -23,5 +23,11 @@
 * [자바스크립트로 S3에 파일 올리기 #1](./s3/005/)
 
 ### 채팅 구현하기
-
 * [Naver Cloud Game Chat을 이용한 채팅 예제](./naver/001/)
+
+
+## Software engineering
+* [초보 개발자를 위한 설계 비법](https://www.whatap.io/ko/blog/152/index.html)
+* [동적설계를 통해서 시스템 설계하기](./software-engineering/001/)
+* [데이터베이스 설계 비법](https://www.youtube.com/watch?v=SRJNHmk4kok&list=PLdJpJI2SrqEn7_HhVcrQHEmpaCWphVTfr)
+* [인터페이스와 클래스 상속의 차이](https://youtu.be/1Zl1Mpw6NPk?si=UzTLFvOoOCdgSyHF)
