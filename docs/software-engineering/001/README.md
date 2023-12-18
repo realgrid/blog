@@ -60,6 +60,6 @@
 
 시간이 나는대로 설계에 대한 이야기를 계속 다룰 예정이며, 이전의 올려둔 아래 영상과 게시물도 참고하시기 바랍니다.
 
-* [초보 개발자를 위한 설계 비법](https://www.whatap.io/ko/blog/152/index.html)
-* [데이터베이스 설계 비법](https://www.youtube.com/watch?v=SRJNHmk4kok&list=PLdJpJI2SrqEn7_HhVcrQHEmpaCWphVTfr)
-* [인터페이스와 클래스 상속의 차이](https://youtu.be/1Zl1Mpw6NPk?si=UzTLFvOoOCdgSyHF)
+* [초보 개발자를 위한 설계 비법 (블로그)](https://www.whatap.io/ko/blog/152/index.html)
+* [데이터베이스 설계 비법 (시리즈 영상)](https://www.youtube.com/watch?v=SRJNHmk4kok&list=PLdJpJI2SrqEn7_HhVcrQHEmpaCWphVTfr)
+* [인터페이스와 클래스 상속의 차이 (영상 설명)](https://youtu.be/1Zl1Mpw6NPk?si=UzTLFvOoOCdgSyHF)
