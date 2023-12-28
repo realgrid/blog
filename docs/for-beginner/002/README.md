@@ -1,5 +1,6 @@
 ---
 marp: true
+theme: dracula
 ---
 
 # 재귀호출 쉽고 확실하게 이해하기
@@ -68,3 +69,4 @@ Console.WriteLine(Sum(10));
 
 ---
 
+감사합니다.
