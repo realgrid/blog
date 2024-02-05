@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+
+<body>
+    <div id="chart">
+    </div>
+
+    <script>
+        RealChart.createChart(document, 'chart', {
+            title: '첫 번째 RealChart',
+            series: {
+                data: [5, 7, 12, 16, 10, 8, 11, 8.5],
+            }
+        });
+    </script>
+</body>
+
+</html>
