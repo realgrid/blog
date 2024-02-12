@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+
+<body>
+    <div id="chart">
+    </div>
+
+    <script>
+        const config = {
+            title: {
+                text: '2023년 11월',
+                style: {
+                    fontSize: '16px',
+                },
+            },
+            subtitle: {
+                text: '여론 조사',
+                style: {
+                    fontSize: '32px',
+                    fontWeight: 'bold',
+                },
+            },
+            series: {
+                type: 'pie',
+                data: [
+                    { label: '매우 긍정', value: 11.1 },
+                    { label: '어느 정도 긍정', value: 31.4 },
+                    { label: '어느 정도 부정', value: 33.5 },
+                    { label: '매우 부정', value: 16.5 },
+                    { label: '모름|무응답', value: 7.1 },
+                ],
+                pointLabel: {
+                    visible: true,
+                    text: '${x}<br>${y}',
+                    style: {
+                        fill: '#fff',
+                    }
+                },
+                tooltipText: '${x}: ${y}%',
+            },
+        };
+
+        RealChart.createChart(document, 'chart', config);
+    </script>
+</body>
+
+</html>
