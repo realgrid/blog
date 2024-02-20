@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+
+<body>
+    <div id="chart">
+    </div>
+
+    <script>
+        const config = {
+            xAxis: {
+                categories: [
+                    '서울', '부산', '대구', '인천', '광주', '대전', '울산',
+                    '경기', '강원', '충북', '충남', '전북', '전남', '세종',
+                    '경북', '경남', '제주'
+                ],
+                tick: {
+                    visible: true,
+                    length: 20,
+                    style: {
+                        stroke: 'red',
+                        strokeWidth: '3px'
+                    }
+                },
+                label: {
+                    rotation: 45,
+                    style: {
+                        fill: 'var(--color-0)',
+                        fontWeight: 700,
+                    }
+                },
+                grid: {
+                    visible: true,
+                    style: {
+                        stroke: 'silver',
+                    }
+                }
+            },
+            yAxis: {
+                type: 'linear',
+                tick: {
+                    visible: true,
+                    stepInterval: 10,
+                    style: {
+                        stroke: 'red',
+                        strokeWidth: '3px'
+                    }
+                },
+            },
+            series: {
+                data: [50, 25, 33, 57, 30, 54, 21, 49, 26, 40, 55, 45, 20, 68, 29, 23, 18]
+            },
+        };
+
+        RealChart.createChart(document, 'chart', config);
+    </script>
+</body>
+
+</html>
