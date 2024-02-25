@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+
+<body>
+    <div id="chart" style="width: 800px; height: 500px;">
+    </div>
+
+    <script>
+        const config = {
+            title: '2023년 2월 카드사 연체율',
+            xAxis: {
+                categories: ['신한', '삼성', 'KB', '롯데', 'BC', '우리', '하나'],
+            },
+            series: {
+                data: [1.73, 1.19, 1.92, 1.36, 1.54, 1.82, 1.86],
+            },
+            annotations: [
+                {
+                    imageUrl: 'https://www.realchart.co.kr/demo/assets/images/cards.png',
+                    front: true,
+                    width: 100,
+                    offsetX: 30
+                },
+                {
+                    text: '*자료: 금융감독원',
+                    scope: 'container',
+                    style: {
+                        fontSize: '18px',
+                        fontWeight: 'bold',
+                        fill: '#666'
+                    },
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            ],
+            body: {
+                annotations: [
+                    {
+                        type: 'shape',
+                        shape: 'rectangle',
+                        front: true,
+                        offsetX: 438,
+                        offsetY: 50,
+                        style: {
+                            fill: 'none',
+                            stroke: 'red',
+                            strokeWidth: '5px'
+                        }
+                    },
+                    {
+                        type: 'shape',
+                        shape: 'star',
+                        front: true,
+                        offsetX: 334,
+                        offsetY: 80,
+                        style: {
+                            fill: 'none',
+                            stroke: 'red',
+                            strokeWidth: '5px'
+                        }
+                    },
+                ]
+            }
+        };
+
+        RealChart.createChart(document, 'chart', config);
+    </script>
+</body>
+
+</html>
