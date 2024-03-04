@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+
+<body>
+    <div id="chart" style="width: 800px; height: 500px;">
+    </div>
+
+    <script>
+        const config = {
+            series: {
+                data: [5, 7, 12, 16, 10, 8, 11, 8.5],
+            },
+
+            title: {
+                text: 'Style 및 꾸미기',
+                style: {
+                    fontSize: '20px',
+                    fill: '#333'
+                }
+            }
+        };
+
+        RealChart.createChart(document, 'chart', config);
+    </script>
+</body>
+
+</html>
