@@ -110,11 +110,11 @@
             type: 'colors',
             id: 'color1',
             colors: ['#88f', '#aaf', '#bbf', '#ddf', '#eef'],
-            mode: 'suffle'
+            mode: 'sㅗuffle'
         }
     ],
     series: {
-        pointsColors: 'color1',
+        pointColors: 'color1',
     }
 }
 ```
