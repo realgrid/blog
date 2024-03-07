@@ -14,17 +14,15 @@
     <script>
         const config = {
             assets: [{
-                type: 'radialGradient',
+                type: 'linearGradient',
                 id: 'gradient-1',
-                color: ['#fff', '#0088ff'],
-                cx: 0.3,
-                cy: 0.3,
-                rd: 0.4
+                color: ['#0088ff', 'red'],
+                opacity: [1, 0]
             }],
 
             series: {
                 data: [5, 7, 12, 16, 10, 8, 11, 8.5],
-                type: 'bubble',
+                type: 'area',
                 style: {
                     fill: 'url(#gradient-1)',
                 },

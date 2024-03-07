@@ -14,18 +14,15 @@
     <script>
         const config = {
             assets: [{
-                type: 'linearGradient',
-                id: 'gradient-1',
-                color: ['#0088ff', 'red'],
-                opacity: [1, 0]
+                type: 'colors',
+                id: 'color1',
+                colors: ['#88f', '#aaf', '#bbf', '#ddf', '#eef', '#ccf', '#99f', '#77f'],
+                mode: 'shuffle',
             }],
 
             series: {
                 data: [5, 7, 12, 16, 10, 8, 11, 8.5],
-                type: 'area',
-                style: {
-                    fill: 'url(#gradient-1)',
-                },
+                pointColors: 'color1',
             },
         };
 

@@ -13,26 +13,23 @@
 
     <script>
         const config = {
+            assets: [
+                {
+                    type: 'pattern',
+                    id: 'pattern-0',
+                    pattern: 0,
+                    style: {
+                        stroke: 'black'
+                    }
+                },
+            ],
+
             series: {
                 data: [5, 7, 12, 16, 10, 8, 11, 8.5],
-                type: 'line',
                 style: {
-                    stroke: 'red',
-                    strokeWidth: 5,
-                    strokeDasharray: '4',
+                    fill: 'url(#pattern-0)'
                 },
-                tooltipText: '<b>${name}</b><br>${series}:<b> ${yValue;0;#,##0.0}</b>',
             },
-
-            title: {
-                text: 'RealChart',
-                style: {
-                    fontSize: '32px',
-                    fontWeight: 'bold',
-                    fill: 'blue',
-                    fillOpacity: 0.1,
-                }
-            }
         };
 
         RealChart.createChart(document, 'chart', config);
@@ -40,3 +37,7 @@
 </body>
 
 </html>
+
+<script>
+
+</script>
