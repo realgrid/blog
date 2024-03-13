@@ -1,0 +1,258 @@
+# ChatGPT 파인튜닝하기
+
+## 파인튜닝 데이터의 예
+
+### 데이터 형식
+
+``` json
+{
+    "role": "system",
+    "content": "프로그래밍 도움을 제공하는 전문가"
+},
+{
+    "role": "user",
+    "content":"prompt"
+},
+{
+    "role": "assistant",
+    "content": "completion"
+}
+```
+
+### 실제 파일에 저장된 형태
+
+``` json
+{"messages": [{"role": "system", "content": "프로그래밍 도움을 제공하는 전문가"}, {"role": "user", "content": "[input]"}, {"role": "assistant", "content": "[output]"}]}
+```
+
+* [예제 파일 다운받기](./training_data.jsonl)
+
+## OpenAI API 활용 예제
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT Dark Theme</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+        }
+
+        #container {
+            text-align: center;
+            background-color: #2d2d2d;
+            color: white;
+            padding: 20px;
+            min-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #inputContainer {
+            border: 2px solid #555;
+            border-radius: 25px;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        #userInput {
+            flex-grow: 1;
+            background-color: #333;
+            color: white;
+            border: none;
+            outline: none;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 15px;
+            resize: none;
+            overflow: hidden;
+            box-sizing: border-box;
+            min-height: 50px;
+        }
+
+        button {
+            background-color: #555;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            padding: 10px 15px;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        #response {
+            margin-top: 20px;
+            background-color: #252526;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            max-height: 80vh;
+            max-width: 90vh;
+            overflow-y: auto;
+        }
+
+        .answer {
+            padding: 10px;
+            background-color: #2d2d2d;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        pre code {
+            display: block;
+            overflow-x: auto;
+            padding: 0.5em;
+            background: #0d0d0d;
+            color: #ccc;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="inputContainer">
+            <textarea id="userInput" placeholder="질문을 입력하세요" oninput="autoGrow(this)"></textarea>
+            <button onclick="getChatGPTResponse()">▲</button>
+        </div>
+        <div id="response"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        hljs.initHighlightingOnLoad();
+
+        const API_URL = "https://api.openai.com/v1/chat/completions";
+        const API_KEY = "[API_KEY]";
+
+        async function getChatGPTResponse() {
+            const userInput = document.getElementById('userInput').value;
+            const responseElement = document.getElementById('response');
+
+            responseElement.innerHTML = '<div class="loader"></div>';
+
+            const payload = {
+                model: "[MODEL_ID]",
+                temperature: 0.2,
+                messages: [{
+                    role: "user",
+                    content: userInput
+                }]
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API 호출 에러: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(data);
+
+                const answer = data.choices[0].message.content.trim();
+
+                const htmlContent = marked.parse(answer);
+                responseElement.innerHTML = `<div class="answer">${htmlContent}</div>`;
+
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            } catch (error) {
+                console.error('API 요청 실패:', error);
+                responseElement.innerHTML = `<div class="answer">오류 발생: ${error.message}</div>`;
+            }
+        }
+
+        function autoGrow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight > 240 ? 240 : element.scrollHeight) + "px";
+        }
+
+        document.getElementById('userInput').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                getChatGPTResponse();
+            }
+        });
+    </script>
+</body>
+
+</html>
+```

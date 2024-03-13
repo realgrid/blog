@@ -1,0 +1,1 @@
+{"messages": [{"role": "system", "content": "프로그래밍 도움을 제공하는 전문가"}, {"role": "user", "content": "[input]"}, {"role": "assistant", "content": "[output]"}]}
