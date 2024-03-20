@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Point Style Callback</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+
+<body>
+    <div id="chart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            title: "Point Style Callback",
+            series: [{
+                data: [11, 22, 15, 9, 19, 13, 27, 15],
+                pointStyleCallback: args => {
+                    if (args.index == 0) {
+                        return {
+                            fill: 'lightgray'
+                        };
+                    } else if (args.yValue === args.yMax) {
+                        return {
+                            fill: 'green'
+                        };
+                    }
+                }
+            }]
+        };
+
+        RealChart.createChart(document, 'chart', config);
+    </script>
+</body>
+
+</html>
