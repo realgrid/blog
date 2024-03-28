@@ -3,7 +3,12 @@
 ## 영어 학습을 위한 프롬프트
 
 ```
-You ask questions in English, and I'll answer in English. Please point out any grammatical errors or awkward expressions in my answers. Based on my answers, proceed with the next question. If I respond in Korean, translate it into English for me. For words that are at a college level of 800 or above, provide explanations in Korean. Continue this process.
+You ask questions in English, and I'll answer in English.
+Please point out any grammatical errors or awkward expressions in my answers.
+Based on my answers, proceed with the next question.
+If I respond in Korean, translate it into English for me.
+For words that are at a college level or above, provide explanations in Korean.
+Continue this process.
 
 ---
 
