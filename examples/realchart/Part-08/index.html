@@ -1,114 +1,48 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Home</title>
+    <title>RealChart - Polar Chart</title>
     <link href="./realchart-style.css" rel="stylesheet">
     <script type="text/javascript" src="./realchart-lic.js"></script>
     <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
-    <script type="text/javascript" src="./datas.js"></script>
-</head>
-
-<body>
-    <div id="realchart" style="width: 800px; height: 500px;"></div>
     <script>
         const config = {
             polar: true,
-            templates: {
-                series: {
-                    pointLabel: false,
-                    xField: 'angle',
-                    yField: 'hits',
-                    tooltipText: '${x}°: ${y}hits'
-                },
-                logAxis: {
-                    label: {
-                        visible: true,
-                        effect: 'outline',
-                        outlineThickness: 5,
-                        style: { fill: '#555' },
-                        firstText: ''
-                    },
-                    title: 'hits',
-                    tick: {
-                        visible: false,
-                        steps: [0, Math.log10(5), Math.log10(10), Math.log10(20), Math.log10(30)]
-                    }
-                },
-                linearAxis: {
-                    label: {
-                        visible: true,
-                        effect: 'outline',
-                        outlineThickness: 5,
-                        style: { fill: '#555' },
-                        firstText: ''
-                    }
-                }
-            },
-            title: {
-                text: 'W.R Lion',
-                align: 'left',
-                style: { fontWeight: 700 }
-            },
-            subtitle: {
-                text: '<t style="fill:#888">Balls in play</t><br><t style="fill:var(--color-3)">Hits</t>',
-                align: 'left',
-                style: { textAlign: 'left' }
-            },
-            legend: false,
+            title: 'Polar Chart',
             xAxis: {
-                type: 'linear',
-                reversed: true,
-                startAngle: 10,
-                totalAngle: 160,
-                strictMin: -80,
-                strictMax: 80,
-                label: {
-                    visible: true,
-                    suffix: '°',
-                    style: { fill: '#999' }
-                },
-                tick: { stepInterval: 10 },
-                line: {
-                    visible: true,
-                    style: { stroke: '#999' }
-                }
+                type: 'category',
+                categories: ['성남시', '용인시', '수원시', '일산시', '화성시', '평택시']
             },
             yAxis: {
-                template: 'logAxis',
-                type: 'log'
+                line: true,
+                label: true
             },
-            annotations: [{
-                type: 'image',
-                imageUrl: 'https://www.realchart.co.kr/demo/assets/images/baseball-player.png',
-                align: 'center',
-                verticalAlign: 'middle',
-                offsetX: -110,
-                offsetY: -30,
-                width: 380
-            }],
-            tooltip: {
-                text: '${name}°: ${y}hits'
-            },
-            series: {
-                layout: 'overlap',
-                groupPadding: 0,
-                children: [
-                    {
-                        template: 'series',
-                        data: ballsData,
-                        style: { stroke: 'none', fill: '#bbb' }
-                    },
-                    {
-                        template: 'series',
-                        data: hitsData,
-                        style: { stroke: 'none', fill: 'var(--color-3)' }
-                    }
-                ]
-            }
+            series: [{
+                type: 'area',
+                color: '#ccc',
+                data: [13, 9, 11, 12.3, 11, 15.5]
+            }, {
+                type: 'bar',
+                pointLabel: true,
+                data: [7, 11, 9, 14.3, 13, 12.5]
+            }]
         };
 
-        RealChart.createChart(document, 'realchart', config);
+        window.addEventListener('DOMContentLoaded', function () {
+            try {
+                RealChart.setLogging(true);
+                RealChart.createChart(document, 'realchart', config);
+            } catch (err) {
+                alert(err);
+                console.error(err);
+            }
+        });
     </script>
+</head>
+
+<body>
+    <div id="realchart" style="width: 850px; height: 550px; border: 1px solid lightgray; margin: 20px 30px;"></div>
 </body>
 
 </html>
