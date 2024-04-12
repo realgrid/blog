@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>RealChart - Polar Chart</title>
+    <title>RealChart - Polar Chart (Bar)</title>
     <link href="./realchart-style.css" rel="stylesheet">
     <script type="text/javascript" src="./realchart-lic.js"></script>
     <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
@@ -18,15 +18,18 @@
                 line: true,
                 label: true
             },
-            series: [{
-                type: 'area',
-                color: '#ccc',
-                data: [13, 9, 11, 12.3, 11, 15.5]
-            }, {
-                type: 'bar',
-                pointLabel: true,
-                data: [7, 11, 9, 14.3, 13, 12.5]
-            }]
+            series: [
+                {
+                    type: 'area',
+                    color: '#ccc',
+                    data: [13, 9, 11, 12.3, 11, 15.5]
+                },
+                {
+                    type: 'bar',
+                    pointLabel: true,
+                    data: [7, 11, 9, 14.3, 13, 12.5]
+                }
+            ]
         };
 
         window.addEventListener('DOMContentLoaded', function () {

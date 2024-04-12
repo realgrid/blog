@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+    <script type="text/javascript" src="./datas.js"></script>
+</head>
+
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            polar: true,
+            templates: {
+                series: {
+                    pointLabel: false,
+                    xField: 'angle',
+                    yField: 'hits',
+                    tooltipText: '${x}°: ${y}hits'
+                },
+                logAxis: {
+                    label: {
+                        visible: true,
+                        effect: 'outline',
+                        outlineThickness: 5,
+                        style: { fill: '#555' },
+                        firstText: ''
+                    },
+                    title: 'hits',
+                    tick: {
+                        visible: false,
+                        steps: [0, Math.log10(5), Math.log10(10), Math.log10(20), Math.log10(30)]
+                    }
+                },
+                linearAxis: {
+                    label: {
+                        visible: true,
+                        effect: 'outline',
+                        outlineThickness: 5,
+                        style: { fill: '#555' },
+                        firstText: ''
+                    }
+                }
+            },
+            title: {
+                text: 'W.R Lion',
+                align: 'left',
+                style: { fontWeight: 700 }
+            },
+            legend: false,
+            xAxis: {
+                type: 'linear',
+                reversed: true,
+                startAngle: 10,
+                totalAngle: 160,
+                strictMin: -80,
+                strictMax: 80,
+                label: {
+                    visible: true,
+                    suffix: '°',
+                    style: { fill: '#999' }
+                },
+                tick: { stepInterval: 10 },
+                line: {
+                    visible: true,
+                    style: { stroke: '#999' }
+                }
+            },
+            yAxis: {
+                template: 'logAxis',
+                type: 'log'
+            },
+            annotations: [{
+                type: 'image',
+                imageUrl: 'https://www.realchart.co.kr/demo/assets/images/baseball-player.png',
+                align: 'center',
+                verticalAlign: 'middle',
+                offsetX: -110,
+                offsetY: -30,
+                width: 380
+            }],
+            tooltip: {
+                text: '${name}°: ${y}hits'
+            },
+            series: {
+                layout: 'overlap',
+                groupPadding: 0,
+                children: [
+                    {
+                        template: 'series',
+                        data: ballsData,
+                        style: { stroke: 'none', fill: '#bbb' }
+                    },
+                    {
+                        template: 'series',
+                        data: hitsData,
+                        style: { stroke: 'none', fill: 'var(--color-3)' }
+                    }
+                ]
+            }
+        };
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+
+</html>
