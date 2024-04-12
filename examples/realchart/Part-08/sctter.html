@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+    <script type="text/javascript" src="./datas.js"></script>
+</head>
+
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            polar: true,
+            type: 'scatter',
+            templates: {
+                series: {
+                    xField: 'height',
+                    yField: 'weight',
+                    radius: 5
+                }
+            },
+            title: {
+                text: "Olympic player's physique",
+                align: 'left'
+            },
+            xAxis: {
+                title: 'Height',
+                baseValue: null
+            },
+            yAxis: {
+                line: {
+                    visible: true
+                },
+                title: 'Weight'
+            },
+            series: [
+                {
+                    template: 'series',
+                    name: 'Asia',
+                    data: asiaData
+                },
+                {
+                    template: 'series',
+                    name: 'Europe',
+                    data: europeData,
+                    shape: 'diamond',
+                    color: 'var(--color-3)'
+                }
+            ]
+        };
+        RealChart.createChart(document, "realchart", config);
+    </script>
+</body>
+
+</html>
