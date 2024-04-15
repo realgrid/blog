@@ -20,29 +20,6 @@
                     yField: 'hits',
                     tooltipText: '${x}°: ${y}hits'
                 },
-                logAxis: {
-                    label: {
-                        visible: true,
-                        effect: 'outline',
-                        outlineThickness: 5,
-                        style: { fill: '#555' },
-                        firstText: ''
-                    },
-                    title: 'hits',
-                    tick: {
-                        visible: false,
-                        steps: [0, Math.log10(5), Math.log10(10), Math.log10(20), Math.log10(30)]
-                    }
-                },
-                linearAxis: {
-                    label: {
-                        visible: true,
-                        effect: 'outline',
-                        outlineThickness: 5,
-                        style: { fill: '#555' },
-                        firstText: ''
-                    }
-                }
             },
             title: {
                 text: 'W.R Lion',
@@ -69,8 +46,19 @@
                 }
             },
             yAxis: {
-                template: 'logAxis',
-                type: 'log'
+                type: 'log',
+                label: {
+                    visible: true,
+                    effect: 'outline',
+                    outlineThickness: 5,
+                    style: { fill: '#555' },
+                    firstText: ''
+                },
+                title: 'hits',
+                tick: {
+                    visible: false,
+                    steps: [0, Math.log10(5), Math.log10(10), Math.log10(20), Math.log10(30)]
+                }
             },
             annotations: [{
                 type: 'image',
