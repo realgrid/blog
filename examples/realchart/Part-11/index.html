@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+    <script type="text/javascript" src="./datas.js"></script>
+</head>
+
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            series: {
+                type: 'candlestick',
+                data: wtiData,
+                xField: 'date',
+                openField: 'openprc',
+                highField: 'highprc',
+                lowField: 'lowprc',
+                closeField: 'closeprc',
+                declineStyle: {
+                    fill: 'var(--color-3)'
+                },
+                style: {
+                    fill: 'var(--color-1)',
+                    stroke: 'black'
+                }
+            },
+            xAxis: {
+                type: 'time',
+                crosshair: true,
+            },
+            yAxis: {
+                crosshair: true,
+            },
+            title: {
+                text: 'WTI (Woori Tech Inc.)',
+                align: 'left',
+            },
+            annotations: [
+                {
+                    offsetX: 280,
+                    offsetY: 3,
+                    text: '81,400',
+                    style: {
+                        fontSize: '16pt',
+                        fontWeight: 700,
+                        fill: '#000'
+                    }
+                },
+                {
+                    offsetX: 355,
+                    offsetY: 8,
+                    text: '-1,200 (-0.01%)',
+                    style: {
+                        fontSize: '12pt',
+                        fontWeight: 700,
+                        fill: 'var(--color-3)'
+                    }
+                }
+            ],
+        }
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+
+</html>
