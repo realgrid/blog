@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>RealChart - AreaRange & Line</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+    <script type="text/javascript" src="./datas.js"></script>
+</head>
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            title: 'AreaRange & Line',
+            xAxis: {
+                type: 'time',
+                tick: {
+                    stepInterval: '1d'
+                },
+                label: {
+                    timeFormat: 'MM월 dd일'
+                }
+            },
+            yAxis: {},
+            series: [
+                {
+                    type: 'arearange',
+                    marker: {
+                        visible: false
+                    },
+                    xStart: '2020-01',
+                    xStep: '1d',
+                    data: temperatureRangeData
+                },
+                {
+                    type: 'line',
+                    color: 'blue',
+                    xStart: '2020-01',
+                    xStep: '1d',
+                    data: averageTemperatureData
+                }
+            ]
+        };
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+</html>

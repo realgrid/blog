@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>RealChart - Line & Lollipop Series</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            templates: {
+                templates01: {
+                    data: [11, 13, 10, 15, 19, 22]
+                }
+            },
+            title: 'Line & Lollipop Series',
+            xAxis: {
+                title: '일일 Daily fat',
+                categories: ['`14', '`15', '`16', '`17', '`18', '`19']
+            },
+            yAxis: {
+                title: 'Vertical 수직축 Axis'
+            },
+            legend: true,
+            series: [{
+                    template: 'templates01',
+                    type: 'line',
+                    pointLabel: true
+                },
+                {
+                    template: 'templates01',
+                    type: 'lollipop',
+                    visibleInLegend: false,
+                    style: {
+                        fill: 'none',
+                        strokeWidth: '1px'
+                    }
+                }
+            ]
+        };
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+</html>

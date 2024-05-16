@@ -1,1 +1,2 @@
-var realChartLic = 'upVcPE+wPOkOR/egW8JuxkM/nBOseBrflwxYpzGZyYm9cY8amGDkiMnVeQKUHJDjW2y71jtk+wte7L7C4dZzvKapL2ezKhFOcJQVB3j0jxbQX/333q4sjQ==';
+// 2024-07-31 localhost, 127.0.0.1
+var realChartLic = 'upVcPE+wPOkOR/egW8JuxkM/nBOseBrflwxYpzGZyYlnRyUuAXyLeK+VftULexn77B0PqgFuedJe7L7C4dZzvIWdu4ppFLmGVq5QaGN66f/QX/333q4sjQ==';

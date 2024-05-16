@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>RealChart - Bar & Pie Series</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            title: 'Bar & Pie Series',
+            xAxis: {
+                title: '일일 Daily fat',
+                categories: ['성남시', '용인시', '수원시', '일산시', '화성시', '평택시'],
+                grid: true
+            },
+            yAxis: {
+                title: 'Vertical 수직축 Axis'
+            },
+            series: [
+                {
+                    name: 'bar1',
+                    pointLabel: true,
+                    visibleInLegend: false,
+                    data: [11, 13, 10, 15, 19, 22]
+                },
+                {
+                    type: 'pie',
+                    centerX: '15%',
+                    centerY: '25%',
+                    radius: '20%',
+                    pointLabel: true,
+                    legendByPoint: true,
+                    data: [
+                        ['성남시', 111],
+                        ['용인시', 113],
+                        ['수원시', 110],
+                        ['일산시', 115],
+                        ['화성시', 119],
+                        ['평택시', 122]
+                    ]
+                }
+            ]
+        };
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+</html>
