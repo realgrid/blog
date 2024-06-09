@@ -1,0 +1,41 @@
+아래 코드를 아주 쉽게 설명해줘.
+
+<html>
+<head>
+    <title>2011년 - 서울 주차별 평균 온도</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+    <script type="text/javascript" src="./datas.js"></script>
+</head>
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            xAxis: {
+                categories: [
+                    '1주', '2주', '3주', '4주', '5주', '6주', '7주', '8주', '9주', '10주',
+                    '11주', '12주', '13주', '14주', '15주', '16주', '17주', '18주', '19주', '20주',
+                    '21주', '22주', '23주', '24주', '25주', '26주', '27주', '28주', '29주', '30주',
+                    '31주', '32주', '33주', '34주', '35주', '36주', '37주', '38주', '39주', '40주',
+                    '41주', '42주', '43주', '44주', '45주', '46주', '47주', '48주', '49주', '50주',
+                    '51주', '52주'
+                ]
+            },
+            yAxis: {
+                title: '요일',
+                categories: ['일', '월', '화', '수', '목', '금', '토' ]
+            },
+            series: {
+                type: 'heatmap',
+                viewRangeValue: 'z',
+                viewRanges: rangeData,
+                tooltipText: '<t style="font-weight:bold">${xValue}차</t><br><b>평균온도: ${zValue}°C</b>',
+                data: temperatureData
+            }
+        }
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+</html>
