@@ -1,9 +1,4 @@
 const groupMaxValues = {
-    undefined: {
-        group: undefined,
-        value: 0,
-        title: ''
-    },
     a01: {
         group: 'a01',
         value: 7781,

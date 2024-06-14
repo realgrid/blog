@@ -19,6 +19,7 @@
                     visible: true,
                     textCallback: (args) => {
                         if (groupMaxValues[args.group].value === args.yValue) {
+                            const groupSum = 76961;
                             const percent = (args.yValue / groupSum) * 100;
                             return (groupMaxValues[args.group].title + '<br>' + percent.toFixed(2) + '%');
                         } else {
