@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Treemap - Data Visualization</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+    <script type="text/javascript" src="./datas.js"></script>
+</head>
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const groupSum = 76961;
+        const config = {
+            series: {
+                type: 'treemap',
+                tooltipText: '${y} 건',
+                algorithm: 'squarify',
+                pointLabel: {
+                    visible: true,
+                    textCallback: (args) => {
+                        if (groupMaxValues[args.group].value === args.yValue) {
+                            const percent = (args.yValue / groupSum) * 100;
+                            return (groupMaxValues[args.group].title + '<br>' + percent.toFixed(2) + '%');
+                        } else {
+                            return ' ';
+                        }
+                    },
+                },
+                data: seriesData
+            },
+        };
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+</html>
