@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Funnel Chart - Data Visualization</title>
+    <link href="./realchart-style.css" rel="stylesheet">
+    <script type="text/javascript" src="./realchart-lic.js"></script>
+    <script type="text/javascript" src="./realchart.0.9.43.min.js"></script>
+</head>
+<body>
+    <div id="realchart" style="width: 800px; height: 500px;"></div>
+    <script>
+        const config = {
+            legend: {
+                position: 'right',
+                style: {
+                    marginTop: '16px',
+                    marginRight: '20px'
+                }
+            },
+            series: [{
+                type: 'funnel',
+                tooltipText: 'height: ${height}',
+                pointLabel: {
+                    visible: true,
+                    text: '${name} (${y})',
+                    position: 'outside'
+                },
+                legendByPoint: true,
+                data: [{
+                        name: '웹사이트 방문',
+                        y: 13293
+                    },
+                    {
+                        name: '장바구니 담기',
+                        y: 4729
+                    },
+                    {
+                        name: '결제제페이지',
+                        y: 2742
+                    },
+                    {
+                        name: '구매 완료',
+                        y: 1391
+                    }
+                ]
+            }]
+        };
+
+        RealChart.createChart(document, 'realchart', config);
+    </script>
+</body>
+</html>
