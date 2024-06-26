@@ -1,13 +1,9 @@
 # RealGrid 기술 블로그
 
-
 ## Realgrid-Touch
-
 * [Part 3. 헤더와 푸터 다루기](./realgrid-touch/03/)
 
-
 ## OOP
-
 * [클래스 상속과 인터페이스 구현의 차이](./oop/001/)
 
 ## Web programming
@@ -36,3 +32,10 @@
 * [동적설계를 통해서 시스템 설계하기](./software-engineering/001/)
 * [데이터베이스 설계 비법](https://www.youtube.com/watch?v=SRJNHmk4kok&list=PLdJpJI2SrqEn7_HhVcrQHEmpaCWphVTfr)
 * [인터페이스와 클래스 상속의 차이](https://youtu.be/1Zl1Mpw6NPk?si=UzTLFvOoOCdgSyHF)
+
+## A.I.
+* [ChatGPT가 모르는 것을 ChatGPT에게 물어보기](./ai/001/)
+* [ChatGPT API를 이용한 프로젝트 전체 코드 분석](https://youtu.be/e3eX5cCsPn0?si=XtmNgZoUKZnBmdZ_)
+* [ChatGPT 파인튜닝하기](https://youtu.be/6FmNaQLLlqw?si=Tru72vs-69Izhtkv)
+* [다이어그램을 코드로 바꾸기](https://youtu.be/84aahTtS9hY?si=jFFQkM9snH32ssRk)
+* [ChatGPT 활용꿀팁](https://youtu.be/MxrImxSL3ZQ?si=QcX8eaH07u9TnFCQ)
