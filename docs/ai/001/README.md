@@ -6,7 +6,8 @@
 
 1. 파이썬 3 버전 설치
 2. pip install requests numpy nltk
-3. OpenAI 웹사이트에서 API 키 발급
+   * 또는 pip3 install requests numpy nltk
+4. OpenAI 웹사이트에서 API 키 발급
 
 ### 소스 코드 가져오기
 
